@@ -10,8 +10,7 @@ export default function ({route,navigation}){
             <Image source={{uri: linkImage}}
                    style={styles.imagess}
             />
-            <Text>{linkTitle}</Text>
-            <Text>{linkId}</Text>
+
         </View>
     );
 }
@@ -24,8 +23,8 @@ const styles = StyleSheet.create({
     },
 
     imagess:{
-        width:430,
-        height:600,
+        width:450,
+        height:700,
         borderRadius:40,
     }
 })

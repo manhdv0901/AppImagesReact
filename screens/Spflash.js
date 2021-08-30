@@ -1,12 +1,13 @@
 import React from "react";
 import {StyleSheet, View, Image, Dimensions} from "react-native";
-const WIDTH = Dimensions.get('window').width
+const WIDTH = Dimensions.get('window').width;
+const HIGH = Dimensions.get('window').height;
 
 
 export default function Spflash ({navigation}){
     setTimeout( () => {
         navigation.push('signin')
-    },1000);
+    },3000);
 
     return(
         <View style={styles.container}>
@@ -24,17 +25,10 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     images:{
-        width:450,
-        height:730,
+        width:WIDTH,
+        height:HIGH,
         position:'absolute',
     },
-    text:{
-        width:WIDTH,
-        height:100,
-        color:'white',
-        textAlign:'center',
-        fontSize:36,
-        fontWeight:'bold',
-    }
+
 
 });

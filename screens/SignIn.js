@@ -7,12 +7,14 @@ import "firebase/database";
 import "firebase/firestore";
 import "firebase/functions";
 import "firebase/storage";
+import {FlatList} from "react-native-web";
 
 
 
 export default function SignIn  ({navigation}) {
     const[phone, setPhone] = useState('');
     const[pass, setPass] = useState('');
+    const [data, setData] = useState([]);
 
     let regexPhone ="^0\\d{9}$"
     let isOkPhone = phone.match(regexPhone);
@@ -35,18 +37,72 @@ export default function SignIn  ({navigation}) {
                 Pass: pass,
             }, function (error){
                 if (error){
-                    alert('Can not acount to firebase');
+                    console.log('Can not user to firebase');
                 }else {
 
-                    alert('Add acount succesfully');
+                    console.log('Add user succesfully');
 
                 }
             });
             alert('Đăng nhập thành công !');
-            navigation.navigate('listimage');
+                navigation.navigate('listimage');
         }else{
             console.log('Error');
         }
+    }
+
+    function updateUser (phoneId, pass){
+        if (phone.toString() == '' || pass.toString() == ''){
+            alert('thông tin không được để trống');
+            return checkk;
+        }else if (phone.toString() == 'admin' && pass.toString()=='admin'){
+            navigation.push('userslist');
+            return checkk;
+        }else if (!isOkPhone){
+            alert('Số điện thoại không đúng định dạng');
+            return checkk;
+        }
+
+        if(checkk){
+            firebase.database().ref('us/' + phoneId).set({
+                Pass: pass,
+            }, function (error){
+                if (error){
+                    console.log('Can not user to firebase');
+                }else {
+
+                    console.log('Update user succesfully');
+
+                }
+            });
+            alert('Update succesfully !');
+
+        }else{
+            console.log('Error');
+        }
+    }
+
+
+    function getData(){
+        firebase.database().ref('us/').on('value', function (snapsoft){
+            let array = [];
+            snapsoft.forEach(function (childSnapsoft){
+                var childData = childSnapsoft.val();
+                array.push({
+                    phoneId: childSnapsoft.key,
+                    pass: childData.Pass,
+                });
+            });
+            setData(array);
+            console.log(data);
+            // alert(array)
+        })
+    }
+
+    function deleteUser(phoneId){
+        firebase.database().ref('us/'+phoneId).remove()
+        alert('Delete succesfully');
+        console.log('Delete user '+ phoneId);
     }
 
     return(
@@ -120,17 +176,20 @@ export default function SignIn  ({navigation}) {
                 fontSize:17,
                 marginTop:100,
                 marginRight:180,
-                textTransform:'uppercase'}}>
-                Need Help?
+                textTransform:'uppercase'}}
+                  onPress = {() => deleteUser(phone)}
+            >
+                Delete User
             </Text>
             <Text style={{color:'#5E239D',
                 fontSize:17,
                 marginLeft:200,
                 marginTop:-27,
                 textTransform:'uppercase'}}
-                  onPress={() => navigation.push('signup')}>
-                Sign Up
+                  onPress={() => updateUser(phone, pass) }>
+                Update User
             </Text>
+
 
 
         </View>
