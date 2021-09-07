@@ -20,6 +20,7 @@ export default function SignIn  ({navigation}) {
     let isOkPhone = phone.match(regexPhone);
     let checkk = true;
 
+    //check number phone
     function addUserSignIn (phoneId, pass){
         if (phone.toString() == '' || pass.toString() == ''){
             alert('thông tin không được để trống');
@@ -83,27 +84,14 @@ export default function SignIn  ({navigation}) {
     }
 
 
-    function getData(){
-        firebase.database().ref('us/').on('value', function (snapsoft){
-            let array = [];
-            snapsoft.forEach(function (childSnapsoft){
-                var childData = childSnapsoft.val();
-                array.push({
-                    phoneId: childSnapsoft.key,
-                    pass: childData.Pass,
-                });
-            });
-            setData(array);
-            console.log(data);
-            // alert(array)
-        })
-    }
 
     function deleteUser(phoneId){
         firebase.database().ref('us/'+phoneId).remove()
         alert('Delete succesfully');
         console.log('Delete user '+ phoneId);
     }
+
+
 
     return(
         <View style={styles.container}>

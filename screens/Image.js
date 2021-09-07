@@ -2,6 +2,7 @@ import React from "react";
 import {Image, View, StyleSheet, Text} from "react-native";
 
 export default function ({route,navigation}){
+    //get data sent
     const {linkImage} = route.params;
     const {linkTitle} = route.params;
     const {linkId} = route.params;

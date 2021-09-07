@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
     },
     images:{
-        width:WIDTH,
-        height:HIGH,
+        width:450,
+        height:730,
         position:'absolute',
     },
 

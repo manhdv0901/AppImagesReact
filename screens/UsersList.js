@@ -12,6 +12,7 @@ const WIDTH = Dimensions.get('window').width
 export default function UsersList({navigation}){
     const [data, setData] = useState([]);
 
+    //ckeck connect firebase
     useEffect(() => {
     const firebaseConfig = {
         apiKey: "AIzaSyCrjGXgv-yAvOOy8QpzOetOn93-HQd0U8A",
@@ -33,7 +34,7 @@ export default function UsersList({navigation}){
 
 
 
-
+    //get data number phone and pass from firebase
     const getData = () =>{
         firebase.database().ref('us/').on('value', function (snapsoft){
             let array = [];
