@@ -7,11 +7,10 @@ import "firebase/database";
 import "firebase/firestore";
 import "firebase/functions";
 import "firebase/storage";
-import {FlatList} from "react-native-web";
 
 
 
-export default function SignIn  ({navigation}) {
+export default function SignInScreen  ({navigation}) {
     const[phone, setPhone] = useState('');
     const[pass, setPass] = useState('');
     const [data, setData] = useState([]);

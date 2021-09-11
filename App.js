@@ -2,18 +2,17 @@
 //expo install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
 import "firebase/functions";
 import "firebase/storage";
-import Spflash from "./screens/Spflash";
-import SignIn from "./screens/SignIn";
-import ListImgaes from "./screens/ListImgaes";
-import Image from "./screens/Image";
-import UsersList from "./screens/UsersList"
+import SpflashScreen from "./screens/SpflashScreen";
+import SignInScreen from "./screens/SignInScreen";
+import ListImgaesScreen from "./screens/ListImgaesScreen";
+import ImageScreen from "./screens/ImageScreen";
+import UsersListScreen from "./screens/UsersListScreen"
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 
@@ -43,22 +42,22 @@ export default function App() {
   return (
       //screens switch
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main">
-          <Stack.Screen name={'spflash'}
-                        component={Spflash}
+        <Stack.Navigator >
+          <Stack.Screen name='spflash'
+                        component={SpflashScreen}
                         options={{headerShown:false}}
           />
-          <Stack.Screen name={'signin'}
-                        component={SignIn}
+          <Stack.Screen name='signin'
+                        component={SignInScreen}
                         options={{title:'Đăng nhập'}}/>
-          <Stack.Screen name={'listimage'}
-                        component={ListImgaes}
+          <Stack.Screen name='listimage'
+                        component={ListImgaesScreen}
                         options={{title:'Danh sách ảnh'}}/>
-          <Stack.Screen name={'image'}
-                        component={Image}
+          <Stack.Screen name='image'
+                        component={ImageScreen}
                         options={{title:'Hình ảnh'}}/>
-          <Stack.Screen name={'userslist'}
-                        component={UsersList}
+          <Stack.Screen name='userslist'
+                        component={UsersListScreen}
                         options={{title:'Danh sách người dùng'}}
           />
         </Stack.Navigator>

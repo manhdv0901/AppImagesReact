@@ -9,7 +9,7 @@ import "firebase/storage";
 
 const WIDTH = Dimensions.get('window').width
 
-export default function UsersList({navigation}){
+export default function UsersListScreen({navigation}){
     const [data, setData] = useState([]);
 
     //ckeck connect firebase

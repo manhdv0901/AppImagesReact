@@ -1,7 +1,7 @@
 import React from "react";
 import {Image, View, StyleSheet, Text} from "react-native";
 
-export default function ({route,navigation}){
+export default function ImageScreen ({route,navigation}){
     //get data sent
     const {linkImage} = route.params;
     const {linkTitle} = route.params;

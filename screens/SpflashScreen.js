@@ -4,7 +4,7 @@ const WIDTH = Dimensions.get('window').width;
 const HIGH = Dimensions.get('window').height;
 
 
-export default function Spflash ({navigation}){
+export default function SpflashScreen ({navigation}){
     setTimeout( () => {
         navigation.push('signin')
     },3000);
